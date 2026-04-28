@@ -66,7 +66,7 @@ lib/
 ### 1. Clonar el repositorio
 
 ```bash
-git clone https://github.com/TU_USUARIO/spotiapp_mobile.git
+git clone https://github.com/ImKevinL/spotiapp_mobile.git
 cd spotiapp_mobile
 ```
 
