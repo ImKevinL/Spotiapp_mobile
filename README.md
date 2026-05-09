@@ -4,14 +4,6 @@ Aplicación móvil desarrollada con **Flutter** que consume la API de Spotify pa
 
 ---
 
-## 📱 Capturas de Pantalla
-
-| Home | Búsqueda | Detalle Artista |
-|------|----------|-----------------|
-| Grid de nuevos lanzamientos | Búsqueda en tiempo real | Top canciones del artista |
-
----
-
 ## 🚀 Funcionalidades
 
 - **Home Page**: Grid de álbumes y lanzamientos recientes obtenidos desde la API de Spotify.
