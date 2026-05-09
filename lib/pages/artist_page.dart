@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:just_audio/just_audio.dart';
 import '../services/spotify_service.dart';
+import 'package:url_launcher/url_launcher.dart';  
+
 
 class ArtistPage extends StatefulWidget {
   final String artistId;
@@ -315,6 +317,11 @@ class _ArtistPageState extends State<ArtistPage> {
                         ),
                       ),
                       const SizedBox(width: 8),
+                       IconButton(
+                        icon: const Icon(Icons.open_in_new, color: Color(0xFF1DB954), size: 22),
+                        tooltip: 'Escuchar en Spotify',
+                        onPressed: () => _openInSpotify(trackId),
+                      ),
                       IconButton(
                         icon: Icon(
                           isCurrentlyPlaying
@@ -340,7 +347,18 @@ class _ArtistPageState extends State<ArtistPage> {
       ],
     );
   }
+  Future<void> _openInSpotify(String trackId) async {
+  // Deep link: abre la app de Spotify si está instalada
+  final appUri = Uri.parse('spotify:track:$trackId');
+  // Fallback: abre en el navegador si no tiene la app
+  final webUri = Uri.parse('https://open.spotify.com/track/$trackId');
 
+  if (await canLaunchUrl(appUri)) {
+    await launchUrl(appUri);
+  } else {
+    await launchUrl(webUri, mode: LaunchMode.externalApplication);
+  }
+}
   Widget _noImageHeader() {
     return Container(
       color: const Color(0xFF282828),
